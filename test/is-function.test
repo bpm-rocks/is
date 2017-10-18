@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+. bpm
+bpm::include unittest
+unittest::run
+
+unittest::setup() {
+    . ./fixtures
+}
+
+unittest::case::undefined-is-not-a-function() {
+    ! is::function undefined
+}
+
+unittest::case::filled-array-is-not-a-function() {
+    ! is::function arr
+}
+
+unittest::case::empty-array-is-not-a-function() {
+    ! is::function arr_empty
+}
+
+unittest::case::string-is-not-a-function() {
+    ! is::function str
+}
+
+unittest::case::empty-string-is-not-a-function() {
+    ! is::function str_empty
+}
+
+unittest::case::function-is-a-function() {
+    is::function func
+}

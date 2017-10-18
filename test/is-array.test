@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+. bpm
+bpm::include unittest
+unittest::run
+
+unittest::setup() {
+    . ./fixtures
+}
+
+unittest::case::undefined-is-not-an-array() {
+    ! is::array undefined
+}
+
+unittest::case::filled-array-is-an-array() {
+    is::array arr
+}
+
+unittest::case::empty-array-is-an-array() {
+    is::array arr_empty
+}
+
+unittest::case::string-is-not-an-array() {
+    ! is::array str
+}
+
+unittest::case::empty-string-is-not-an-array() {
+    ! is::array str_empty
+}
+
+unittest::case::function-is-not-an-array() {
+    ! is::array func
+}

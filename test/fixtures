@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+. ../libis
+
+func() { :; }
+
+unset undefined
+
+# shellcheck disable=SC2034
+arr=(abc)
+
+# shellcheck disable=SC2034
+arr_empty=()
+
+# shellcheck disable=SC2034
+str="abc"
+
+# shellcheck disable=SC2034
+str_empty=""

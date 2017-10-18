@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+. bpm
+bpm::include unittest
+unittest::run
+
+unittest::setup() {
+    . ./fixtures
+}
+
+unittest::case::undefined-is-not-set() {
+    ! is::set undefined
+}
+
+unittest::case::filled-array-is-set() {
+    is::set arr
+}
+
+unittest::case::empty-array-is-set() {
+    # Strange, but this is because the first element in the array is
+    # not set, so this is somewhat expected behavior.
+    ! is::set arr_empty
+}
+
+unittest::case::string-is-set() {
+    is::set str
+}
+
+unittest::case::empty-string-is-set() {
+    is::set str_empty
+}
+
+unittest::case::function-is-not-set() {
+    # Also seems strange, but functions operate in a different space than
+    # variables. That explains why you can have function names with colons
+    # but variables must not have colons.
+    ! is::set func
+}
