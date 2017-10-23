@@ -3,13 +3,13 @@ BPM Library: Is
 
 Test if a variable exists, if it is an array and if it is a function.
 
-The library adds functions to a Bash environment so your shell scripts can leverage this extra functionaly. Though it is intended to be included with [BPM](http://bpm.sh), that is not strictly necessary because this has no dependencies.
+The library adds functions to a Bash environment so your shell scripts can leverage this extra functionality. Though it is intended to be included with [BPM](http://bpm.sh), that is not strictly necessary because this has no dependencies.
 
 
 Installation
 ============
 
-Add to your `bpm.ini` file, the following dependency.
+Add to your `bpm.ini` file the following dependency.
 
     [dependencies]
     is=*
