@@ -12,7 +12,7 @@ Installation
 Add to your `bpm.ini` file the following dependency.
 
     [dependencies]
-    is=*
+    0=is
 
 Run `bpm install` to add the library. Finally, use it in your scripts.
 
