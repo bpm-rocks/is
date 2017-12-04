@@ -31,3 +31,12 @@ unittest::case::empty-string-is-not-a-function() {
 unittest::case::function-is-a-function() {
     is::function func
 }
+
+unittest::case::command-is-not-a-function() {
+    ! is::function ls
+}
+
+unittest::case::shadow-a-command() {
+    eval "ls() { :; }"
+    is::function ls
+}

@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+. bpm
+bpm::include bench
+bpm::include string
+
+genTests() {
+    eval "
+        bench::test::$1-function() {
+            $1 isFunctionDeclare
+        }
+
+        bench::test::$1-variable() {
+            $1 BASH_VERION
+        }
+
+        bench::test::$1-command() {
+            $1 ls
+        }
+
+        bench::test::$1-unknown() {
+            $1 asdfasdfasdfasdfasdfasdfasdfasdf
+        }
+    "
+}
+
+isFunctionDeclare() {
+    local functionList functionName
+
+    functionList=$(declare -F)
+    functionList=( ${functionList//declare -f /} )
+
+    for functionName in "${functionList[@]}"; do
+        if [[ "$functionName" == "$1" ]]; then
+            return 0
+        fi
+    done
+
+    return 1
+}
+
+genTests isFunctionDeclare
+
+isFunctionType() {
+    if [[ "$(type -t "$1" || :)" == "function" ]]; then
+        return 0
+    fi
+
+    return 1
+}
+
+genTests isFunctionType
+
+bench::auto
