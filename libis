@@ -44,7 +44,7 @@ is::array() {
 #
 # Returns true (0) if the name is a function, false (1) otherwise.
 is::function() {
-    if [[ "$(type -t "$1" || :)" == "function" ]]; then
+    if declare -Ff "$1" > /dev/null; then
         return 0
     fi
 
