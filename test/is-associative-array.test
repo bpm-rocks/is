@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+# shellcheck disable=SC1091
+. bpm
+bpm::include unittest
+unittest::run
+
+unittest::setup() {
+    . ./fixtures
+}
+
+unittest::case::undefined-is-not-an-associative-array() {
+    ! is::associativeArray undefined
+}
+
+unittest::case::filled-array-is-an-associative-array() {
+    ! is::associativeArray arr
+}
+
+unittest::case::empty-array-is-an-associative-array() {
+    ! is::associativeArray arr_empty
+}
+
+unittest::case::string-is-not-an-associative-array() {
+    ! is::associativeArray str
+}
+
+unittest::case::empty-string-is-not-an-associative-array() {
+    ! is::associativeArray str_empty
+}
+
+unittest::case::function-is-not-an-associative-array() {
+    ! is::associativeArray func
+}
+
+unitTest::case::associative-array-is-an-associative-array() {
+    is::associativeArray assoc
+}

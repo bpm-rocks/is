@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# shellcheck disable=SC1091
 . bpm
 bpm::include unittest
 unittest::run
@@ -30,4 +31,8 @@ unittest::case::empty-string-is-not-an-array() {
 
 unittest::case::function-is-not-an-array() {
     ! is::array func
+}
+
+unitTest::case::associative-array-is-an-array() {
+    is::array assoc
 }

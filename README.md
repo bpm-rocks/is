@@ -43,6 +43,13 @@ Examples
         echo "Be careful to use the variable's name in the function call."
     fi
 
+    declare -A associativeArray
+    associativeArray[test]=value
+ 
+    if is::array associativeArray; then
+        echo "This is also an array"
+    fi
+
     right=wrong
     wrong=()
 
@@ -52,6 +59,31 @@ Examples
     fi
 
 Returns true (0) if the named variable exists and if it is an array. Returns false (1) otherwise.
+
+
+`is::associativeArray()`
+------------------------
+
+Determine if a given environment variable exists and if it is an associative array.
+
+* $1 - Name of environment variable.
+
+Examples
+
+    declare -A associativeArray
+    associativeArray[test]=value
+ 
+    if is::associativeArray associativeArray; then
+        echo "This is also an array"
+    fi
+ 
+    var=(abc)
+ 
+    if is::associativeArray var; then
+        echo "This is false - $var is not an associative array"
+    fi
+
+Returns true (0) if the named variable exists and if it is an associative array. Returns false (1) otherwise.
 
 
 `is::function()`

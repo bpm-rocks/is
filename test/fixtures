@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# shellcheck disable=SC1091
 . ../libis
 
 func() { :; }
@@ -8,6 +9,9 @@ unset undefined
 
 # shellcheck disable=SC2034
 arr=(abc)
+
+# shellcheck disable=SC2034
+declare -A assoc
 
 # shellcheck disable=SC2034
 arr_empty=()
